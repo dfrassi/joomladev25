@@ -1,0 +1,2 @@
+ALTER TABLE `#__rda` ADD `params` VARCHAR(1024) NOT NULL DEFAULT '';
+
