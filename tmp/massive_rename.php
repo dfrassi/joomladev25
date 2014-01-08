@@ -3,40 +3,61 @@
 
 $path = "com_rda";
 
-function getDirectory($path = '.') {
+
+
+
+function renameDirectory($path = '.') {
 	
 	$toReplace = "helloworld";
 	$withString = "rda";
 	
 	$ignore = array ('cgi-bin','.','..');
 	$dh = @opendir ( $path );
-	$toReadString="";
-	$toWriteString="";
 	
 	while ( false !== ($file = readdir ( $dh )) ) {
 		if (! in_array ( $file, $ignore )) {
 			$newFile = str_replace ( $toReplace, $withString, $file );
 			rename ($path . "\\" . $file, ($path . "\\" . $newFile));
+			if (is_dir("$path/$file"))	renameDirectory ( "$path/$file");						
+		}
+	}
+	closedir ( $dh );
+}
+
+
+function replaceDirectory($path = '.') {
+
+	$toReplace = "helloworld";
+	$toReplaceEx = "HelloWorld";
+	$withString = "rda";
+
+	$ignore = array ('cgi-bin','.','..');
+	$dh = @opendir ( $path );
+
+
+	while ( false !== ($file = readdir ( $dh )) ) {
+		if (! in_array ( $file, $ignore )) {
+			
 			if (is_dir("$path/$file")){
-				getDirectory ( "$path/$file");			
+				replaceDirectory ( "$path/$file");
 			}
 			else{
-				$toReadString = file_get_contents("$path/$newFile");
+				$toReadString = file_get_contents("$path/$file");
 				$toWriteString = str_replace($toReplace,$withString,$toReadString);
-				
-				$toReplace1 = strtoupper($toReplace);
-				$withString1 = strtoupper($withString);
-				$toWriteString = str_replace($toReplace1,$withString1,$toWriteString);
-
-				$toReplace2 = ucfirst($toReplace);
-				$withString2 = ucfirst($withString);
-				$toWriteString = str_replace($toReplace2,$withString2,$toWriteString);
-				
-				file_put_contents("$path/$file",$toWriteString);
+				$toWriteString = str_replace(strtoupper($toReplace),strtoupper($withString),$toWriteString);
+				$toWriteString = str_replace(ucfirst($toReplace),ucfirst($withString),$toWriteString);
+				$toWriteString = str_replace($toReplaceEx,$withString,$toWriteString);
+				file_put_contents("$path/$file",$toWriteString);				
 			}
 		}
 	}
 	closedir ( $dh );
 }
-getDirectory ( $path)?>
+
+
+
+renameDirectory ($path);
+replaceDirectory ($path);
+
+?>
 
