@@ -9,6 +9,6 @@ jimport('joomla.application.component.controller');
 /**
  * Hello World Component Controller
  */
-class HelloWorldController extends JController
+class rdaController extends JController
 {
 }

@@ -7,9 +7,9 @@ defined('_JEXEC') or die('Restricted access');
 jimport('joomla.application.component.controller');
 
 /**
- * General Controller of HelloWorld component
+ * General Controller of rda component
  */
-class HelloWorldController extends JController
+class rdaController extends JController
 {
 	/**
 	 * display task
@@ -19,12 +19,12 @@ class HelloWorldController extends JController
 	function display($cachable = false) 
 	{
 		// set default view if not set
-		JRequest::setVar('view', JRequest::getCmd('view', 'HelloWorlds'));
+		JRequest::setVar('view', JRequest::getCmd('view', 'rdas'));
 
 		// call parent behavior
 		parent::display($cachable);
 
 		// Set the submenu
-		HelloWorldHelper::addSubmenu('messages');
+		rdaHelper::addSubmenu('messages');
 	}
 }

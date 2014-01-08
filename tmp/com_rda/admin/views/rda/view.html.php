@@ -7,9 +7,9 @@ defined('_JEXEC') or die('Restricted access');
 jimport('joomla.application.component.view');
 
 /**
- * HelloWorld View
+ * rda View
  */
-class HelloWorldViewHelloWorld extends JView
+class rdaViewrda extends JView
 {
 	/**
 	 * display method of Hello view
@@ -52,7 +52,7 @@ class HelloWorldViewHelloWorld extends JView
 		$user = JFactory::getUser();
 		$userId = $user->id;
 		$isNew = $this->item->id == 0;
-		$canDo = HelloWorldHelper::getActions($this->item->id);
+		$canDo = rdaHelper::getActions($this->item->id);
 		JToolBarHelper::title($isNew ? JText::_('COM_RDA_MANAGER_RDA_NEW') : JText::_('COM_RDA_MANAGER_RDA_EDIT'), 'rda');
 		// Built the actions for new and existing records.
 		if ($isNew) 

@@ -7,12 +7,12 @@ defined('_JEXEC') or die('Restricted access');
 jimport('joomla.application.component.view');
 
 /**
- * HelloWorlds View
+ * rdas View
  */
-class HelloWorldViewHelloWorlds extends JView
+class rdaViewrdas extends JView
 {
 	/**
-	 * HelloWorlds view display method
+	 * rdas view display method
 	 * @return void
 	 */
 	function display($tpl = null) 
@@ -46,7 +46,7 @@ class HelloWorldViewHelloWorlds extends JView
 	 */
 	protected function addToolBar() 
 	{
-		$canDo = HelloWorldHelper::getActions();
+		$canDo = rdaHelper::getActions();
 		JToolBarHelper::title(JText::_('COM_RDA_MANAGER_RDAS'), 'rda');
 		if ($canDo->get('core.create')) 
 		{

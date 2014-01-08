@@ -13,7 +13,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 /**
- * Script file of HelloWorld component
+ * Script file of rda component
  */
 class com_helloWorldInstallerScript
 {
