@@ -29,6 +29,7 @@ function replaceDirectory($path = '.') {
 
 	$toReplace = "helloworld";
 	$toReplaceEx = "HelloWorld";
+	$toReplaceEx = "Hello World";
 	$withString = "rda";
 
 	$ignore = array ('cgi-bin','.','..');
